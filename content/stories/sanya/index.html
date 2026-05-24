@@ -18,7 +18,7 @@ type: "stories"
         .book {
             max-width: 900px;
             margin: 0 auto;
-            background: #fffef5;
+            background: var(--story-bg, #fffef5);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
@@ -66,7 +66,7 @@ type: "stories"
         }
         .chapter {
             padding: 60px 50px;
-            border-bottom: 2px dashed #e0d5c0;
+            border-bottom: 2px dashed var(--story-border, #e0d5c0);
             position: relative;
         }
         .chapter:last-child {
@@ -81,13 +81,13 @@ type: "stories"
         }
         .chapter h2 {
             font-size: 2em;
-            color: #2c3e50;
+            color: var(--story-heading, #2c3e50);
             margin-bottom: 25px;
         }
         .chapter p {
             font-size: 1.15em;
             line-height: 2;
-            color: #4a4a4a;
+            color: var(--story-text, #4a4a4a);
             margin-bottom: 15px;
             text-indent: 2em;
         }
@@ -636,12 +636,12 @@ type: "stories"
             text-align: center;
             padding: 12px;
             font-style: italic;
-            color: #777;
+            color: var(--story-text-muted, #777);
             font-size: 0.95em;
-            background: #f9f6ef;
+            background: var(--story-caption-bg, #f9f6ef);
         }
         .dialogue {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            background: var(--story-dialogue-bg, linear-gradient(135deg, #f5f7fa, #c3cfe2));
             border-radius: 15px;
             padding: 20px 25px;
             margin: 20px 0;
@@ -665,7 +665,7 @@ type: "stories"
         .footer {
             text-align: center;
             padding: 50px;
-            background: linear-gradient(180deg, #fffef5, #f0e6d3);
+            background: var(--story-footer-bg, linear-gradient(180deg, #fffef5, #f0e6d3));
         }
         .footer .heart {
             font-size: 3em;
@@ -679,13 +679,13 @@ type: "stories"
         .footer p {
             margin-top: 20px;
             font-size: 1.1em;
-            color: #666;
+            color: var(--story-text-muted, #666);
             line-height: 1.8;
         }
         .divider {
             text-align: center;
             margin: 30px 0;
-            color: #ccc;
+            color: var(--story-divider, #ccc);
             font-size: 1.5em;
             letter-spacing: 10px;
         }

@@ -1,3 +1,28 @@
+/* === Story CSS Variables === */
+:root {
+  --story-bg: #fffef5;
+  --story-text: #4a4a4a;
+  --story-heading: #2c3e50;
+  --story-text-muted: #666;
+  --story-divider: #ccc;
+  --story-dialogue-bg: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  --story-footer-bg: linear-gradient(180deg, #fffef5, #f0e6d3);
+  --story-caption-bg: #f9f6ef;
+  --story-border: #e0d5c0;
+}
+
+[data-theme="dark"] {
+  --story-bg: #1a1a2e;
+  --story-text: #ccc;
+  --story-heading: #e8e8e8;
+  --story-text-muted: #999;
+  --story-divider: #444;
+  --story-dialogue-bg: linear-gradient(135deg, #252540, #1e1e3a);
+  --story-footer-bg: linear-gradient(180deg, #1a1a2e, #15152a);
+  --story-caption-bg: #252540;
+  --story-border: #333;
+}
+
 /* Story page */
 .story-page {
   max-width: 900px;
@@ -5,37 +30,15 @@
   padding: 0;
 }
 
-/* Light mode - remove book shadow for cleaner look */
+/* Book container */
 .book {
   box-shadow: none !important;
   border-radius: 0 !important;
-  background: var(--color-bg) !important;
 }
 
-/* === Dark mode overrides for story content === */
-[data-theme="dark"] .book {
-  background: #1a1a2e !important;
-  box-shadow: none !important;
-}
-
+/* === Dark mode overrides (for properties not using variables) === */
 [data-theme="dark"] .cover {
   background: linear-gradient(180deg, #004e6d 0%, #003d56 50%, #b8860b 100%) !important;
-}
-
-[data-theme="dark"] .cover {
-  background: linear-gradient(180deg, #004e6d 0%, #003d56 50%, #b8860b 100%);
-}
-
-[data-theme="dark"] .chapter {
-  border-bottom-color: #333 !important;
-}
-
-[data-theme="dark"] .chapter p {
-  color: #ccc !important;
-}
-
-[data-theme="dark"] .chapter h2 {
-  color: #e8e8e8 !important;
 }
 
 [data-theme="dark"] .chapter .illustration {
@@ -43,16 +46,7 @@
 }
 
 [data-theme="dark"] .chapter-number {
-  color: #4db8d8;
-}
-
-[data-theme="dark"] .dialogue {
-  background: linear-gradient(135deg, #252540, #1e1e3a) !important;
-  color: #ddd !important;
-}
-
-[data-theme="dark"] .dialogue * {
-  color: #ddd !important;
+  color: #4db8d8 !important;
 }
 
 [data-theme="dark"] .dialogue .speaker {
@@ -60,26 +54,14 @@
 }
 
 [data-theme="dark"] .dialogue::before {
-  color: #4db8d8;
-}
-
-[data-theme="dark"] .footer {
-  background: linear-gradient(180deg, #1a1a2e, #15152a) !important;
-}
-
-[data-theme="dark"] .footer p {
-  color: #bbb;
+  color: #4db8d8 !important;
 }
 
 [data-theme="dark"] .footer .heart {
   color: #e74c3c;
 }
 
-[data-theme="dark"] .caption {
-  background: #252540 !important;
-  color: #999 !important;
-}
-
-[data-theme="dark"] .divider {
-  color: #444;
+[data-theme="dark"] .cover h1,
+[data-theme="dark"] .cover .subtitle {
+  color: white !important;
 }
