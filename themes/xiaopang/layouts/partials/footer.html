@@ -16,13 +16,9 @@ function toggleTheme() {
   }
 }
 (function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.addEventListener('DOMContentLoaded', function() {
-      const btn = document.querySelector('.theme-toggle');
-      if (btn) btn.textContent = '☀️';
-    });
+  const btn = document.querySelector('.theme-toggle');
+  if (localStorage.getItem('theme') === 'dark' && btn) {
+    btn.textContent = '☀️';
   }
 })();
 </script>
