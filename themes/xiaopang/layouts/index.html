@@ -14,7 +14,7 @@
       {{ .Params.emoji | default "📖" }}
     </div>
     <div class="info">
-      <div class="label">Latest Story</div>
+      <div class="label">最新故事</div>
       <h2>{{ .Title }}</h2>
       <p>{{ .Params.summary | default .Description | default "点击阅读这个故事" }}</p>
     </div>
@@ -24,7 +24,7 @@
 
 {{ if gt (len $stories) 1 }}
 <section class="more">
-  <h4>More Stories</h4>
+  <h4>更多故事</h4>
   <div class="more-grid">
     {{- range after 1 $stories }}
     <a href="{{ .Permalink }}" class="mini-card">
