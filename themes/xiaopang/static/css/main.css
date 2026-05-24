@@ -279,16 +279,9 @@ a {
 
 /* === Story Wrapper === */
 .story-wrapper {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 40px 20px;
-  min-height: 60vh;
-  border-radius: 24px;
   max-width: var(--max-width);
-  margin: 20px auto 40px;
-}
-
-[data-theme="dark"] .story-wrapper {
-  background: transparent;
+  margin: 0 auto;
+  padding: 20px 20px 40px;
 }
 
 /* === Story Bottom Nav === */
@@ -380,8 +373,6 @@ a {
   }
 
   .story-wrapper {
-    border-radius: 0;
-    margin: 0;
-    padding: 20px 10px;
+    padding: 10px 0;
   }
 }

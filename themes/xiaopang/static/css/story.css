@@ -2,13 +2,20 @@
 .story-page {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
+}
+
+/* Light mode - remove book shadow for cleaner look */
+.book {
+  box-shadow: none;
+  border-radius: 0;
+  background: var(--color-bg);
 }
 
 /* === Dark mode overrides for story content === */
 [data-theme="dark"] .book {
-  background: #1e1e2e;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  background: var(--color-bg);
+  box-shadow: none;
 }
 
 [data-theme="dark"] .cover {
