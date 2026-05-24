@@ -1,0 +1,6 @@
+name = "xiaopang"
+license = "MIT"
+description = "小旁的故事 - 自定义绘本主题"
+
+[author]
+  name = "Xiangyu Li"

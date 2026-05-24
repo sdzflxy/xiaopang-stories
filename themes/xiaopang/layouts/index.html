@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>{{ .Site.Title }}</h1>
+  <p>{{ .Site.Params.description }}</p>
+</section>
+
+<section class="stories-grid">
+  {{- range where .Site.RegularPages "Section" "stories" }}
+  {{- if ne .Title "" }}
+  <a href="{{ .Permalink }}" class="story-card">
+    <div class="card-cover" style="background: linear-gradient(135deg, {{ .Params.coverGradientFrom | default "#00b4db" }}, {{ .Params.coverGradientTo | default "#f5af19" }});">
+      {{ .Params.emoji | default "📖" }}
+    </div>
+    <div class="card-body">
+      <div class="card-title">{{ .Title }}</div>
+      <div class="card-meta">{{ .Params.when | default (.Date.Format "2006年1月") }} · 小旁 {{ .Params.age | default "5" }} 岁</div>
+    </div>
+  </a>
+  {{- end }}
+  {{- end }}
+</section>
+{{ end }}
