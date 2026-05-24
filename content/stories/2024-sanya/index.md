@@ -1,0 +1,868 @@
+---
+title: "三亚奇遇记"
+date: 2024-12-01
+params:
+  when: "2024年冬"
+  age: "5"
+  emoji: "🏖️"
+  coverGradientFrom: "#00b4db"
+  coverGradientTo: "#f5af19"
+  quote: "太阳去海底给小鱼们讲睡前故事啦"
+  tags: ["旅行", "大海", "沙滩"]
+  theme: "勇气与好奇"
+type: "stories"
+---
+
+<style>
+        .book {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fffef5;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .cover {
+            background: linear-gradient(180deg, #00b4db 0%, #0083b0 50%, #f5af19 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23fffef5' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+        .cover h1 {
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        .cover .subtitle {
+            font-size: 1.3em;
+            color: #fff8e1;
+            font-style: italic;
+        }
+        .sun {
+            width: 80px;
+            height: 80px;
+            background: #ffd93d;
+            border-radius: 50%;
+            margin: 30px auto 0;
+            box-shadow: 0 0 40px #ffd93d, 0 0 80px rgba(255,217,61,0.5);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 40px #ffd93d; }
+            50% { transform: scale(1.1); box-shadow: 0 0 60px #ffd93d, 0 0 100px rgba(255,217,61,0.3); }
+        }
+        .chapter {
+            padding: 60px 50px;
+            border-bottom: 2px dashed #e0d5c0;
+            position: relative;
+        }
+        .chapter:last-child {
+            border-bottom: none;
+        }
+        .chapter-number {
+            font-size: 0.9em;
+            color: #0083b0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .chapter h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        .chapter p {
+            font-size: 1.15em;
+            line-height: 2;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+        .illustration {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .scene {
+            width: 100%;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+        .scene-beach {
+            background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 55%, #f4d03f 55%, #f4d03f 70%, #00b4db 70%);
+        }
+        .scene-beach .palm {
+            position: absolute;
+            bottom: 85px;
+            left: 60px;
+        }
+        .scene-beach .palm .trunk {
+            width: 12px;
+            height: 120px;
+            background: linear-gradient(90deg, #8B4513, #A0522D);
+            border-radius: 5px;
+            transform: rotate(-5deg);
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+        }
+        .scene-beach .palm .leaves {
+            position: absolute;
+            bottom: 110px;
+            left: -10px;
+            width: 80px;
+            height: 50px;
+            background: #228B22;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-10deg);
+        }
+        .scene-beach .palm .leaves::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 45px;
+            background: #2E8B57;
+            border-radius: 50% 50% 0 0;
+            top: -5px;
+            left: 15px;
+            transform: rotate(15deg);
+        }
+        .scene-beach .figure-dad {
+            position: absolute;
+            bottom: 75px;
+            left: 45%;
+            width: 30px;
+            height: 70px;
+        }
+        .scene-beach .figure-dad .head {
+            width: 22px;
+            height: 22px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .scene-beach .figure-dad .body {
+            width: 28px;
+            height: 35px;
+            background: #3498db;
+            border-radius: 5px;
+            margin: 3px auto 0;
+        }
+        .scene-beach .figure-dad .legs {
+            width: 24px;
+            height: 15px;
+            margin: 0 auto;
+            border-left: 8px solid #2c3e50;
+            border-right: 8px solid #2c3e50;
+        }
+        .scene-beach .figure-kid {
+            position: absolute;
+            bottom: 75px;
+            left: 52%;
+            width: 22px;
+            height: 50px;
+        }
+        .scene-beach .figure-kid .head {
+            width: 18px;
+            height: 18px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .scene-beach .figure-kid .body {
+            width: 20px;
+            height: 22px;
+            background: #e74c3c;
+            border-radius: 5px;
+            margin: 2px auto 0;
+        }
+        .scene-beach .figure-kid .legs {
+            width: 16px;
+            height: 10px;
+            margin: 0 auto;
+            border-left: 6px solid #2c3e50;
+            border-right: 6px solid #2c3e50;
+        }
+        .scene-beach .sandcastle {
+            position: absolute;
+            bottom: 70px;
+            right: 80px;
+        }
+        .scene-beach .sandcastle .base {
+            width: 60px;
+            height: 30px;
+            background: #daa520;
+            border-radius: 5px 5px 0 0;
+        }
+        .scene-beach .sandcastle .tower {
+            width: 25px;
+            height: 35px;
+            background: #daa520;
+            border-radius: 3px 3px 0 0;
+            margin: 0 auto;
+            position: relative;
+        }
+        .scene-beach .sandcastle .tower::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 12px solid #b8860b;
+        }
+        .scene-beach .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 85px;
+            background: linear-gradient(180deg, rgba(0,180,219,0.7), #006994);
+            animation: wave 4s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .scene-beach .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.9;
+        }
+        .scene-beach .cloud1 {
+            top: 30px;
+            right: 100px;
+            width: 80px;
+            height: 30px;
+            animation: float 6s ease-in-out infinite;
+        }
+        .scene-beach .cloud2 {
+            top: 50px;
+            right: 250px;
+            width: 60px;
+            height: 25px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+        .scene-underwater {
+            background: linear-gradient(180deg, #00b4db 0%, #004e92 100%);
+        }
+        .scene-underwater .bubble {
+            position: absolute;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: rise 4s ease-in infinite;
+        }
+        .scene-underwater .bubble:nth-child(1) { width: 15px; height: 15px; left: 20%; bottom: 10%; animation-delay: 0s; }
+        .scene-underwater .bubble:nth-child(2) { width: 10px; height: 10px; left: 40%; bottom: 5%; animation-delay: 1s; }
+        .scene-underwater .bubble:nth-child(3) { width: 20px; height: 20px; left: 60%; bottom: 15%; animation-delay: 2s; }
+        .scene-underwater .bubble:nth-child(4) { width: 8px; height: 8px; left: 80%; bottom: 8%; animation-delay: 0.5s; }
+        .scene-underwater .bubble:nth-child(5) { width: 12px; height: 12px; left: 35%; bottom: 20%; animation-delay: 1.5s; }
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-250px) scale(0.5); opacity: 0; }
+        }
+        .scene-underwater .fish {
+            position: absolute;
+            animation: swim 5s ease-in-out infinite;
+        }
+        .scene-underwater .fish1 {
+            top: 60px;
+            left: 100px;
+            width: 50px;
+            height: 25px;
+            background: #f39c12;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation-delay: 0s;
+        }
+        .scene-underwater .fish1::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 3px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 18px solid #e67e22;
+        }
+        .scene-underwater .fish2 {
+            top: 140px;
+            right: 150px;
+            width: 40px;
+            height: 20px;
+            background: #e74c3c;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation-delay: 1.5s;
+            animation-direction: reverse;
+        }
+        .scene-underwater .fish2::after {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 2px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 15px solid #c0392b;
+        }
+        .scene-underwater .fish3 {
+            top: 200px;
+            left: 250px;
+            width: 35px;
+            height: 18px;
+            background: #9b59b6;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation-delay: 3s;
+        }
+        .scene-underwater .fish3::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 2px;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 13px solid #8e44ad;
+        }
+        .scene-underwater .coral {
+            position: absolute;
+            bottom: 0;
+        }
+        .scene-underwater .coral1 {
+            left: 50px;
+            width: 40px;
+            height: 60px;
+            background: #e74c3c;
+            border-radius: 20px 20px 5px 5px;
+        }
+        .scene-underwater .coral2 {
+            left: 200px;
+            width: 30px;
+            height: 45px;
+            background: #f39c12;
+            border-radius: 15px 15px 5px 5px;
+        }
+        .scene-underwater .coral3 {
+            right: 100px;
+            width: 50px;
+            height: 70px;
+            background: #2ecc71;
+            border-radius: 25px 25px 5px 5px;
+        }
+        .scene-underwater .seaweed {
+            position: absolute;
+            bottom: 0;
+            width: 8px;
+            height: 80px;
+            background: #27ae60;
+            border-radius: 4px;
+            animation: sway 3s ease-in-out infinite;
+        }
+        .scene-underwater .seaweed:nth-of-type(6) { left: 120px; height: 70px; animation-delay: 0.5s; }
+        .scene-underwater .seaweed:nth-of-type(7) { left: 300px; height: 90px; }
+        .scene-underwater .seaweed:nth-of-type(8) { right: 200px; height: 60px; animation-delay: 1s; }
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        @keyframes swim {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(60px); }
+        }
+        .scene-underwater .snorkel-dad {
+            position: absolute;
+            top: 80px;
+            left: 55%;
+        }
+        .scene-underwater .snorkel-dad .head {
+            width: 28px;
+            height: 28px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            position: relative;
+        }
+        .scene-underwater .snorkel-dad .head::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: -5px;
+            width: 38px;
+            height: 12px;
+            background: rgba(0,180,219,0.5);
+            border-radius: 10px;
+            border: 2px solid #333;
+        }
+        .scene-underwater .snorkel-kid {
+            position: absolute;
+            top: 100px;
+            left: 65%;
+        }
+        .scene-underwater .snorkel-kid .head {
+            width: 22px;
+            height: 22px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            position: relative;
+        }
+        .scene-underwater .snorkel-kid .head::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -4px;
+            width: 30px;
+            height: 10px;
+            background: rgba(0,180,219,0.5);
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+        .scene-sunset {
+            background: linear-gradient(180deg, #ff6b6b 0%, #feca57 40%, #ff9ff3 60%, #341f97 100%);
+        }
+        .scene-sunset .sun-setting {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: #ffd93d;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(255,217,61,0.8);
+        }
+        .scene-sunset .water-reflection {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(180deg, rgba(52,31,151,0.5), #1a0533);
+        }
+        .scene-sunset .water-reflection::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 35%;
+            width: 120px;
+            height: 4px;
+            background: rgba(255,217,61,0.5);
+            border-radius: 2px;
+            box-shadow:
+                0 15px 0 rgba(255,217,61,0.3),
+                20px 30px 0 rgba(255,217,61,0.2),
+                -10px 45px 0 rgba(255,217,61,0.15);
+        }
+        .scene-sunset .silhouette {
+            position: absolute;
+            bottom: 100px;
+            left: 30%;
+        }
+        .scene-sunset .silhouette .dad-s {
+            display: inline-block;
+            width: 20px;
+            height: 55px;
+            background: #1a0533;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+        .scene-sunset .silhouette .dad-s::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: #1a0533;
+            border-radius: 50%;
+        }
+        .scene-sunset .silhouette .kid-s {
+            display: inline-block;
+            width: 15px;
+            height: 38px;
+            background: #1a0533;
+            border-radius: 8px 8px 0 0;
+            margin-left: 8px;
+            position: relative;
+            vertical-align: bottom;
+        }
+        .scene-sunset .silhouette .kid-s::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 1px;
+            width: 13px;
+            height: 13px;
+            background: #1a0533;
+            border-radius: 50%;
+        }
+        .scene-sunset .silhouette .hand {
+            position: absolute;
+            top: 15px;
+            right: -12px;
+            width: 20px;
+            height: 3px;
+            background: #1a0533;
+            transform: rotate(-20deg);
+        }
+        .scene-sunset .bird {
+            position: absolute;
+            color: #1a0533;
+            font-size: 20px;
+        }
+        .scene-sunset .bird1 { top: 40px; left: 20%; }
+        .scene-sunset .bird2 { top: 60px; left: 70%; }
+        .scene-sunset .bird3 { top: 30px; right: 25%; }
+        .scene-market {
+            background: linear-gradient(180deg, #a8e6cf 0%, #dcedc1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scene-market .coconut {
+            position: absolute;
+            left: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .scene-market .coconut .shell {
+            width: 60px;
+            height: 50px;
+            background: linear-gradient(135deg, #8B4513, #654321);
+            border-radius: 50%;
+            position: relative;
+        }
+        .scene-market .coconut .straw {
+            position: absolute;
+            top: -20px;
+            left: 25px;
+            width: 4px;
+            height: 30px;
+            background: #e74c3c;
+            border-radius: 2px;
+            transform: rotate(10deg);
+        }
+        .scene-market .coconut .straw::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -3px;
+            width: 10px;
+            height: 10px;
+            background: #e74c3c;
+            border-radius: 50%;
+        }
+        .scene-market .fruits {
+            position: absolute;
+            right: 15%;
+            top: 40%;
+        }
+        .scene-market .mango {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+        }
+        .scene-market .dragon-fruit {
+            width: 35px;
+            height: 45px;
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+        }
+        .scene-market .pineapple {
+            width: 30px;
+            height: 50px;
+            background: linear-gradient(135deg, #f9a825, #f57f17);
+            border-radius: 30% 30% 50% 50%;
+            margin: 5px;
+            display: inline-block;
+            position: relative;
+        }
+        .scene-market .pineapple::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            background: #2e7d32;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .scene-market .starfish {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        .scene-market .shell-item {
+            position: absolute;
+            bottom: 40px;
+            left: 30%;
+            width: 30px;
+            height: 25px;
+            background: linear-gradient(135deg, #fff5ee, #ffdab9);
+            border-radius: 50% 50% 0 0;
+            border: 2px solid #deb887;
+        }
+        .caption {
+            text-align: center;
+            padding: 12px;
+            font-style: italic;
+            color: #777;
+            font-size: 0.95em;
+            background: #f9f6ef;
+        }
+        .dialogue {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin: 20px 0;
+            position: relative;
+            font-style: italic;
+        }
+        .dialogue::before {
+            content: '\201C';
+            font-size: 3em;
+            color: #0083b0;
+            position: absolute;
+            top: -5px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+        .dialogue .speaker {
+            font-weight: bold;
+            color: #0083b0;
+            margin-bottom: 5px;
+        }
+        .footer {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(180deg, #fffef5, #f0e6d3);
+        }
+        .footer .heart {
+            font-size: 3em;
+            color: #e74c3c;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .footer p {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.8;
+        }
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #ccc;
+            font-size: 1.5em;
+            letter-spacing: 10px;
+        }
+</style>
+
+<div class="book">
+    <div class="cover">
+        <div class="sun"></div>
+        <h1>爸爸和小旁的三亚奇遇记</h1>
+        <p class="subtitle">一段关于大海、沙滩和父子冒险的故事</p>
+    </div>
+
+    <div class="chapter">
+        <div class="chapter-number">第一章</div>
+        <h2>出发啦！飞向蓝色大海</h2>
+        <p>这天一大早,小旁就兴奋得像只小猴子一样跳来跳去。"爸爸爸爸！我们今天要去三亚啦！"他背着那个画满恐龙的小书包,里面塞了三把铲子、两个小桶和一副小墨镜。</p>
+        <p>爸爸笑着摸了摸小旁的头:"你确定不带件衣服,只带挖沙工具吗？"</p>
+        <p>小旁认真地想了想:"沙子比衣服重要一百倍！"</p>
+        <p>飞机起飞的时候,小旁趴在窗户上,看着下面的云朵大喊:"爸爸你看！云朵像棉花糖！我能吃一口吗？"爸爸假装很认真地说:"那个嘛,云朵棉花糖只有到了三亚才能吃到哦。"小旁信以为真,更期待了。</p>
+
+        <div class="illustration">
+            <div class="scene scene-beach">
+                <div class="cloud cloud1"></div>
+                <div class="cloud cloud2"></div>
+                <div class="palm">
+                    <div class="trunk"></div>
+                    <div class="leaves"></div>
+                </div>
+                <div class="figure-dad">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="legs"></div>
+                </div>
+                <div class="figure-kid">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="legs"></div>
+                </div>
+                <div class="sandcastle">
+                    <div class="tower"></div>
+                    <div class="base"></div>
+                </div>
+                <div class="wave"></div>
+            </div>
+            <div class="caption">爸爸和小旁在沙滩上的第一天</div>
+        </div>
+    </div>
+
+    <div class="chapter">
+        <div class="chapter-number">第二章</div>
+        <h2>沙滩城堡大作战</h2>
+        <p>到了三亚的海边,小旁立刻甩掉凉鞋,脚丫子踩在温热的沙子上,"哇！沙子在给我的脚做按摩！"</p>
+        <p>父子俩决定建一座"超级无敌大城堡"。爸爸负责挖护城河,小旁负责堆城墙。可是每次小旁好不容易把城墙堆高一点,一个调皮的浪花就"哗啦"一下冲过来,把城墙冲塌一半。</p>
+        <div class="dialogue">
+            <div class="speaker">小旁(叉着腰,对着大海喊):</div>
+            "大海！你再冲我的城堡,我就把你全部喝掉！"
+        </div>
+        <p>爸爸在旁边笑得直不起腰来。大海好像也觉得好笑,又送来一个更大的浪花,这次直接把爸爸的裤腿也淋湿了。小旁哈哈大笑:"爸爸！大海在跟你说'你也别笑'！"</p>
+        <p>最后他们换了个离海远一点的地方,终于建成了一座有三个塔楼的城堡。小旁还在城堡顶上插了一片树叶当旗帜,庄严地宣布:"这是'小旁王国'！爸爸你是大将军！"</p>
+    </div>
+
+    <div class="divider">~ ~ ~</div>
+
+    <div class="chapter">
+        <div class="chapter-number">第三章</div>
+        <h2>海底世界大冒险</h2>
+        <p>第二天,爸爸带小旁去浮潜。小旁戴上潜水镜,嘴里咬着呼吸管,活像一只准备下水的小鸭子。</p>
+        <p>"爸爸,如果我看到鲨鱼怎么办？"小旁有点紧张。</p>
+        <p>"那你就跟它说'你好,鲨鱼先生,我不好吃的'。"爸爸一本正经地回答。</p>
+        <p>他们一起把头埋进水里——天哪！水下是另一个世界！五颜六色的小鱼在珊瑚之间穿梭,像是水里的蝴蝶。一条蓝色的小鱼好奇地游到小旁面前,小旁激动得差点把呼吸管吐出来。</p>
+
+        <div class="illustration">
+            <div class="scene scene-underwater">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="fish fish1"></div>
+                <div class="fish fish2"></div>
+                <div class="fish fish3"></div>
+                <div class="coral coral1"></div>
+                <div class="coral coral2"></div>
+                <div class="coral coral3"></div>
+                <div class="seaweed"></div>
+                <div class="seaweed"></div>
+                <div class="seaweed"></div>
+                <div class="snorkel-dad"><div class="head"></div></div>
+                <div class="snorkel-kid"><div class="head"></div></div>
+            </div>
+            <div class="caption">父子俩的海底浮潜冒险</div>
+        </div>
+
+        <p>上岸后小旁兴奋地讲个不停:"那条蓝色的鱼一定是想跟我做朋友！还有那个橙色的,它肯定是鱼里面的大将军,因为它游得最快！"</p>
+        <p>爸爸说:"说不定明天它们还会记得你呢。"</p>
+        <p>小旁认真地说:"那我明天要带饼干给它们吃！"</p>
+        <p>"鱼不吃饼干啦……"</p>
+        <p>"那它们吃什么？方便面吗？"</p>
+    </div>
+
+    <div class="chapter">
+        <div class="chapter-number">第四章</div>
+        <h2>椰子历险记</h2>
+
+        <div class="illustration">
+            <div class="scene scene-market">
+                <div class="coconut">
+                    <div class="shell"></div>
+                    <div class="straw"></div>
+                </div>
+                <div class="fruits">
+                    <div class="mango"></div>
+                    <div class="dragon-fruit"></div>
+                    <div class="pineapple"></div>
+                </div>
+                <div class="starfish"></div>
+                <div class="shell-item"></div>
+            </div>
+            <div class="caption">三亚的热带水果和海边宝藏</div>
+        </div>
+
+        <p>下午,他们在路边买了一个大椰子。老板用刀"咔咔"几下就开了口,插上吸管递过来。小旁双手捧着比他脸还大的椰子,用力一吸——</p>
+        <p>"噗——"椰汁喷了爸爸一脸。</p>
+        <div class="dialogue">
+            <div class="speaker">小旁(一脸无辜):</div>
+            "爸爸,这个椰子在对你吐口水……"
+        </div>
+        <p>爸爸擦着脸,无奈又好笑地说:"我看是某个小朋友在对爸爸吐口水吧？"</p>
+        <p>小旁赶紧又吸了一口,这次成功了。他眼睛亮晶晶的:"哇！比牛奶好喝一万倍！爸爸我们能带十个回家吗？"</p>
+        <p>"十个椰子在行李箱里,飞机可能飞不动了。"</p>
+        <p>小旁一本正经地想了想:"那我们坐船回去吧,船比较有力气！"</p>
+    </div>
+
+    <div class="divider">~ ~ ~</div>
+
+    <div class="chapter">
+        <div class="chapter-number">第五章</div>
+        <h2>夕阳下的约定</h2>
+        <p>最后一天傍晚,爸爸和小旁手牵手在海边散步。天边的太阳变成了一个巨大的橙红色火球,慢慢地沉向大海,把整片天空和海面都染成了金色。</p>
+
+        <div class="illustration">
+            <div class="scene scene-sunset">
+                <div class="bird bird1">~</div>
+                <div class="bird bird2">~</div>
+                <div class="bird bird3">~</div>
+                <div class="sun-setting"></div>
+                <div class="silhouette">
+                    <div class="dad-s">
+                        <div class="hand"></div>
+                    </div>
+                    <div class="kid-s"></div>
+                </div>
+                <div class="water-reflection"></div>
+            </div>
+            <div class="caption">夕阳下牵手散步的父子剪影</div>
+        </div>
+
+        <p>小旁突然安静下来,紧紧握着爸爸的手。</p>
+        <div class="dialogue">
+            <div class="speaker">小旁(轻声说):</div>
+            "爸爸,太阳是不是去海底睡觉了？"
+        </div>
+        <p>"嗯,它去海底给小鱼们讲睡前故事啦。"爸爸蹲下来,跟小旁平视。</p>
+        <p>"那明天它还会起来吗？"</p>
+        <p>"当然会,太阳每天都会升起来,就像爸爸每天都会陪着你一样。"</p>
+        <p>小旁突然抱住爸爸的脖子,在爸爸耳边说:"爸爸,下次我们还来三亚好不好？我要带妈妈一起来,还有我的恐龙玩具,它也没看过大海呢！"</p>
+        <p>爸爸把小旁抱起来,让他骑在自己肩膀上。小旁在上面伸开双臂,大喊:"我是海鸥！我在飞！"</p>
+        <p>金色的夕阳把父子俩的影子拉得好长好长,一直延伸到海水的边缘。远处有海鸥在飞,浪花在唱歌,风里带着咸咸的海水味和甜甜的椰子香。</p>
+    </div>
+
+    <div class="footer">
+        <div class="heart">&#9829;</div>
+        <p>
+            世界上最美的风景,<br>
+            不是三亚的海,不是天边的夕阳,<br>
+            而是牵着你小小的手,<br>
+            一起走过的每一步路。<br><br>
+            <strong>—— 爸爸写给小旁</strong>
+        </p>
+    </div>
+</div>
