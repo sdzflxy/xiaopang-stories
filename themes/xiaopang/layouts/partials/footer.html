@@ -1,3 +1,28 @@
 <footer class="site-footer">
-  <p>小旁的故事 &copy; {{ now.Year }} — 记录一个小男孩长大的每一个瞬间</p>
+  <p>小旁的故事 &copy; {{ now.Year }}</p>
 </footer>
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    if (btn) btn.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    if (btn) btn.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.querySelector('.theme-toggle');
+      if (btn) btn.textContent = '☀️';
+    });
+  }
+})();
+</script>

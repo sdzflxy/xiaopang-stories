@@ -1,22 +1,41 @@
 {{ define "main" }}
 <section class="hero">
-  <h1>{{ .Site.Title }}</h1>
+  <h1>小旁的<br>故事</h1>
   <p>{{ .Site.Params.description }}</p>
 </section>
 
-<section class="stories-grid">
-  {{- range where .Site.RegularPages "Section" "stories" }}
-  {{- if ne .Title "" }}
-  <a href="{{ .Permalink }}" class="story-card">
-    <div class="card-cover" style="background: linear-gradient(135deg, {{ .Params.coverGradientFrom | default "#00b4db" }}, {{ .Params.coverGradientTo | default "#f5af19" }});">
+{{- $stories := where .Site.RegularPages "Section" "stories" }}
+{{- $featured := index $stories 0 }}
+
+{{ with $featured }}
+<section class="featured">
+  <a href="{{ .Permalink }}" class="featured-card">
+    <div class="cover" style="background: linear-gradient(135deg, {{ .Params.coverGradientFrom | default "#00b4db" }}, {{ .Params.coverGradientTo | default "#f5af19" }});">
       {{ .Params.emoji | default "📖" }}
     </div>
-    <div class="card-body">
-      <div class="card-title">{{ .Title }}</div>
-      <div class="card-meta">{{ .Params.when | default (.Date.Format "2006年1月") }} · 小旁 {{ .Params.age | default "5" }} 岁</div>
+    <div class="info">
+      <div class="label">Latest Story</div>
+      <h2>{{ .Title }}</h2>
+      <p>{{ .Params.summary | default .Description | default "点击阅读这个故事" }}</p>
     </div>
   </a>
-  {{- end }}
-  {{- end }}
 </section>
+{{ end }}
+
+{{ if gt (len $stories) 1 }}
+<section class="more">
+  <h4>More Stories</h4>
+  <div class="more-grid">
+    {{- range after 1 $stories }}
+    <a href="{{ .Permalink }}" class="mini-card">
+      <div class="emoji">{{ .Params.emoji | default "📖" }}</div>
+      <div class="text">
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Params.when | default (.Date.Format "2006年1月") }}</p>
+      </div>
+    </a>
+    {{- end }}
+  </div>
+</section>
+{{ end }}
 {{ end }}

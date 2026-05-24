@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="story-body">
+  <a href="{{ "/" | relURL }}" class="story-back-btn">← 回到首页</a>
+  <main>
+    {{- block "main" . }}{{- end }}
+  </main>
+</body>
+</html>
