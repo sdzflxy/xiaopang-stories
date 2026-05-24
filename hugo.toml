@@ -1,0 +1,18 @@
+baseURL = "https://xiaopang-stories.github.io/"
+languageCode = "zh-CN"
+title = "小旁的故事"
+theme = "xiaopang"
+
+[params]
+  description = "记录一个小男孩长大的每一个瞬间"
+  author = "爸爸和小旁"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  page = ["HTML"]
