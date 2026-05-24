@@ -39,12 +39,16 @@
 }
 
 [data-theme="dark"] .dialogue {
-  background: linear-gradient(135deg, #252540, #1e1e3a);
-  color: #ddd;
+  background: linear-gradient(135deg, #252540, #1e1e3a) !important;
+  color: #ddd !important;
+}
+
+[data-theme="dark"] .dialogue * {
+  color: #ddd !important;
 }
 
 [data-theme="dark"] .dialogue .speaker {
-  color: #4db8d8;
+  color: #4db8d8 !important;
 }
 
 [data-theme="dark"] .dialogue::before {
