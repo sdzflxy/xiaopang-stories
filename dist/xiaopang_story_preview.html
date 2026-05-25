@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小旁的运动会大作战</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Georgia','Noto Serif SC',serif; background:#fff; color:#2c3e50; min-height:100vh; }
+
+.book { max-width:800px; margin:0 auto; padding:40px 20px; }
+
+.cover { text-align:center; padding:60px 30px; background:linear-gradient(135deg,#ff6b6b,#ffd93d); border-radius:20px; margin-bottom:40px; position:relative; overflow:hidden; }
+.cover::before { content:''; position:absolute; top:-20px; right:-20px; width:100px; height:100px; background:rgba(255,255,255,0.15); border-radius:50%; }
+.cover::after { content:''; position:absolute; bottom:-30px; left:-20px; width:80px; height:80px; background:rgba(255,255,255,0.1); border-radius:50%; }
+.cover h1 { font-size:2.4em; color:white; text-shadow:2px 2px 4px rgba(0,0,0,0.2); margin-bottom:10px; font-family:'PingFang SC',sans-serif; }
+.cover .subtitle { color:rgba(255,255,255,0.9); font-size:1.1em; }
+
+.chapter { margin-bottom:36px; }
+.chapter-tag { display:inline-block; background:#ff6b6b; color:white; padding:3px 12px; border-radius:12px; font-size:0.75em; margin-bottom:10px; font-family:'PingFang SC',sans-serif; }
+.chapter h2 { font-size:1.6em; color:#2c3e50; margin-bottom:16px; font-family:'PingFang SC',sans-serif; }
+.chapter p { font-size:1.05em; line-height:2; color:#4a4a4a; margin-bottom:12px; text-indent:2em; }
+
+.my-words { background:linear-gradient(135deg,#fff3e0,#ffe0b2); border-radius:16px; padding:16px 20px; margin:16px 0; border-left:4px solid #ffd93d; font-style:italic; line-height:2; }
+.other-words { background:linear-gradient(135deg,#e3f2fd,#bbdefb); border-radius:16px; padding:16px 20px; margin:16px 0; border-left:4px solid #42a5f5; line-height:2; }
+.speaker { font-weight:bold; font-size:0.85em; color:#e65100; margin-bottom:4px; font-style:normal; }
+.other-words .speaker { color:#1565c0; }
+
+.illustration { margin:24px 0; border-radius:16px; overflow:hidden; height:220px; position:relative; }
+
+.scene-playground { background:#e8f5e9; position:relative; }
+.scene-playground .ground { position:absolute; bottom:0; width:100%; height:60px; background:#a5d6a7; }
+.scene-playground .flag { position:absolute; top:20px; left:50%; transform:translateX(-50%); width:200px; height:40px; background:#f44336; border-radius:4px; display:flex; align-items:center; justify-content:center; color:white; font-size:14px; font-family:'PingFang SC',sans-serif; font-weight:bold; }
+.scene-playground .kid { position:absolute; bottom:60px; }
+.scene-playground .kid .head { width:20px; height:20px; background:#fdbcb4; border-radius:50%; margin:0 auto; }
+.scene-playground .kid .body { width:22px; height:25px; border-radius:4px; margin:2px auto 0; }
+.scene-playground .kid:nth-child(3) { left:15%; }
+.scene-playground .kid:nth-child(3) .body { background:#e91e63; }
+.scene-playground .kid:nth-child(4) { left:28%; }
+.scene-playground .kid:nth-child(4) .body { background:#ff5722; }
+.scene-playground .kid:nth-child(5) { left:41%; }
+.scene-playground .kid:nth-child(5) .body { background:#ffd93d; }
+.scene-playground .kid:nth-child(6) { left:54%; }
+.scene-playground .kid:nth-child(6) .body { background:#e91e63; }
+.scene-playground .kid:nth-child(7) { left:67%; }
+.scene-playground .kid:nth-child(7) .body { background:#ff5722; }
+.scene-playground .kid:nth-child(8) { left:80%; }
+.scene-playground .kid:nth-child(8) .body { background:#e91e63; }
+.scene-playground .bunting { position:absolute; top:8px; left:0; right:0; height:12px; background:repeating-linear-gradient(90deg,#f44336 0px,#f44336 20px,#ffd93d 20px,#ffd93d 40px,#4caf50 40px,#4caf50 60px,#2196f3 60px,#2196f3 80px); clip-path:polygon(0% 0%,5% 100%,10% 0%,15% 100%,20% 0%,25% 100%,30% 0%,35% 100%,40% 0%,45% 100%,50% 0%,55% 100%,60% 0%,65% 100%,70% 0%,75% 100%,80% 0%,85% 100%,90% 0%,95% 100%,100% 0%); }
+
+.scene-rope { background:linear-gradient(180deg,#e3f2fd,#bbdefb); position:relative; }
+.scene-rope .rope-circle { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:140px; height:140px; border:6px solid #795548; border-radius:50%; }
+.scene-rope .parent { position:absolute; width:16px; height:40px; background:#1565c0; border-radius:8px 8px 4px 4px; }
+.scene-rope .parent::before { content:''; position:absolute; top:-12px; left:2px; width:12px; height:12px; background:#fdbcb4; border-radius:50%; }
+.scene-rope .parent:nth-child(2) { top:50%; left:calc(50% - 70px); transform:translateY(-50%) rotate(15deg); }
+.scene-rope .parent:nth-child(3) { top:50%; right:calc(50% - 70px); transform:translateY(-50%) rotate(-10deg); }
+.scene-rope .parent:nth-child(4) { top:calc(50% - 70px); left:50%; transform:translateX(-50%) rotate(-5deg); }
+.scene-rope .parent:nth-child(5) { bottom:calc(50% - 70px); left:50%; transform:translateX(-50%) rotate(8deg); }
+.scene-rope .kid-outside { position:absolute; width:14px; height:30px; border-radius:7px 7px 4px 4px; }
+.scene-rope .kid-outside::before { content:''; position:absolute; top:-10px; left:2px; width:10px; height:10px; background:#fdbcb4; border-radius:50%; }
+.scene-rope .kid-outside:nth-child(6) { top:50%; left:calc(50% - 115px); transform:translateY(-50%); background:#e91e63; }
+.scene-rope .kid-outside:nth-child(7) { top:50%; right:calc(50% - 115px); transform:translateY(-50%); background:#ff5722; }
+.scene-rope .kid-outside:nth-child(8) { top:calc(50% - 115px); left:50%; transform:translateX(-50%); background:#ffd93d; }
+.scene-rope .kid-outside:nth-child(9) { bottom:calc(50% - 115px); left:50%; transform:translateX(-50%); background:#e91e63; }
+.scene-rope .action-lines { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.scene-rope .action-lines span { position:absolute; width:2px; height:20px; background:rgba(244,67,54,0.3); }
+.scene-rope .action-lines span:nth-child(1) { top:-90px; left:0; transform:rotate(10deg); }
+.scene-rope .action-lines span:nth-child(2) { top:0; left:90px; transform:rotate(80deg); }
+.scene-rope .action-lines span:nth-child(3) { top:70px; left:10px; transform:rotate(-20deg); }
+.scene-rope .action-lines span:nth-child(4) { top:0; left:-90px; transform:rotate(100deg); }
+.scene-rope .label { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:12px; color:#666; font-family:'PingFang SC',sans-serif; }
+
+.scene-tug { background:#fff8e1; position:relative; }
+.scene-tug .rope-line { position:absolute; top:50%; left:8%; right:8%; height:8px; background:#795548; border-radius:4px; transform:translateY(-50%); }
+.scene-tug .team { position:absolute; top:50%; transform:translateY(-50%); display:flex; gap:4px; align-items:flex-end; }
+.scene-tug .team-left { left:10%; }
+.scene-tug .team-right { right:10%; }
+.scene-tug .puller { width:18px; height:38px; border-radius:9px 9px 4px 4px; position:relative; }
+.scene-tug .puller::before { content:''; position:absolute; top:-10px; left:3px; width:12px; height:12px; background:#fdbcb4; border-radius:50%; }
+.scene-tug .team-left .puller { background:#e91e63; transform:rotate(-15deg); }
+.scene-tug .team-right .puller { background:#42a5f5; transform:rotate(15deg); }
+.scene-tug .flag-center { position:absolute; top:25%; left:50%; transform:translateX(-50%); width:3px; height:35px; background:#f44336; }
+.scene-tug .flag-center::after { content:''; position:absolute; top:0; left:0; width:16px; height:11px; background:#f44336; }
+.scene-tug .crowd { position:absolute; bottom:15px; left:50%; transform:translateX(-50%); font-size:11px; color:#999; font-family:'PingFang SC',sans-serif; letter-spacing:4px; }
+
+.scene-situp { background:linear-gradient(180deg,#fce4ec,#f8bbd0); position:relative; }
+.scene-situp .mat { position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:160px; height:20px; background:#7b1fa2; border-radius:10px; opacity:0.6; }
+.scene-situp .kid-lying { position:absolute; bottom:60px; left:50%; transform:translateX(-50%); }
+.scene-situp .kid-lying .body-h { width:60px; height:18px; background:#ffd93d; border-radius:9px; }
+.scene-situp .kid-lying .head-h { width:16px; height:16px; background:#fdbcb4; border-radius:50%; position:absolute; top:-2px; left:-10px; }
+.scene-situp .kid-lying .legs { width:30px; height:12px; background:#2c3e50; border-radius:6px; position:absolute; top:3px; right:-20px; }
+.scene-situp .dad-hold { position:absolute; bottom:50px; left:calc(50% + 50px); width:18px; height:45px; background:#1565c0; border-radius:9px 9px 4px 4px; }
+.scene-situp .dad-hold::before { content:''; position:absolute; top:-14px; left:3px; width:12px; height:12px; background:#fdbcb4; border-radius:50%; }
+.scene-situp .count { position:absolute; top:30px; left:50%; transform:translateX(-50%); font-size:48px; font-weight:900; color:rgba(123,31,162,0.2); font-family:'PingFang SC',sans-serif; }
+.scene-situp .sweat { position:absolute; bottom:90px; left:calc(50% - 30px); }
+.scene-situp .sweat span { display:inline-block; width:6px; height:8px; background:rgba(33,150,243,0.4); border-radius:0 0 50% 50%; margin:0 3px; }
+
+.ending { text-align:center; padding:40px 20px; margin-top:20px; border-top:1px solid #eee; }
+.ending .heart { font-size:28px; color:#e74c3c; margin-bottom:12px; }
+.ending p { font-size:1em; color:#888; line-height:2; }
+.brand { text-align:center; margin-top:30px; font-size:0.8em; color:#ccc; }
+</style>
+</head>
+<body>
+<div class="book">
+  <div class="cover">
+    <h1>小旁的运动会大作战</h1>
+    <div class="subtitle">中一班的欢笑与呐喊</div>
+  </div>
+
+  <div class="chapter">
+    <span class="chapter-tag">开场</span>
+    <h2>今天我是运动员！</h2>
+    <p>今天早上我特别特别早就醒了。天还没全亮，我就爬起来去翻我的衣柜。妈妈迷迷糊糊地问："干嘛呢？"我说："我要穿我最帅的衣服！今天是运动会！"</p>
+    <p>我选了那件红色的外套——因为红色跑得最快，这是我自己发现的秘密。</p>
+    <p>到了幼儿园，操场变得完全不一样了！到处挂着彩色的小旗子，在风里飘来飘去，像一群兴奋的蝴蝶。地上画了好多白线，还有一个大大的喇叭在放那种"咚咚咚"的进行曲。我觉得我的心也跟着"咚咚咚"地跳。</p>
+    <p>老师让我们排好队。我挺起胸膛，下巴抬得高高的。旁边的小宇说："你干嘛呀，像个大公鸡。"</p>
+    <div class="my-words">我才不理他呢，我悄悄跟他说："今天我要拿所有项目的第一名。所有的！"<br><br>小宇翻了个白眼："你又吹牛。"<br><br>"不是吹牛，是预言！"</div>
+    <p>老师拿着喇叭说："中一班的小朋友们，今天你们都是小运动员！加油！"所有人一起喊"加油"，声音大得把树上最后几片叶子都震下来了。</p>
+
+    <div class="illustration scene-playground">
+      <div class="bunting"></div>
+      <div class="ground"></div>
+      <div class="flag">中一班运动会</div>
+      <div class="kid"><div class="head"></div><div class="body"></div></div>
+      <div class="kid"><div class="head"></div><div class="body"></div></div>
+      <div class="kid"><div class="head"></div><div class="body"></div></div>
+      <div class="kid"><div class="head"></div><div class="body"></div></div>
+      <div class="kid"><div class="head"></div><div class="body"></div></div>
+      <div class="kid"><div class="head"></div><div class="body"></div></div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <span class="chapter-tag">四面八方</span>
+    <h2>爸爸，你怎么抓不到我！</h2>
+    <p>第一个游戏叫"四面八方"。我一开始不知道这是什么意思，后来看明白了——</p>
+    <p>一根好长好长的绳子围成一个大圈，爸爸妈妈们站在圈里面，手紧紧抓着绳子。我们小朋友站在圈外面，离得远远的。哨子一响，爸爸妈妈要尽力伸手碰到自己的孩子。</p>
+    <p>但问题是！每个爸爸妈妈都在往不同的方向拉，绳子就像一个不听话的怪兽，把所有人都拽住了。爸爸使劲往我这边走，但对面阳阳的妈妈更使劲地往那边拉，爸爸就像被弹弓弹回去一样，"嗖"的一下又回到中间了。</p>
+    <div class="my-words">我在外面急得直跺脚："爸爸！加油啊！你要用力！使劲使劲！"<br><br>我甚至偷偷往前蹭了两小步（别告诉老师）。</div>
+    <p>爸爸的脸涨得像个红苹果，脖子上的青筋都冒出来了。他一只手死死抓着绳子，另一只手拼命往前伸。我也把胳膊伸到最长最长——</p>
+    <p>爸爸的指尖碰到了我的袖子。</p>
+    <p>"碰到了！！！"我高兴得原地转了三圈。爸爸差点被绳子绊倒，一个踉跄，旁边的家长笑成一片。爸爸也笑了，冲我比了个大拇指。</p>
+    <div class="my-words">回到队伍里，我跟小宇说："我爸爸是第三个碰到的！"<br><br>小宇说："我爸爸是第二个。"<br><br>"……那我爸爸碰的最用力！"</div>
+
+    <div class="illustration scene-rope">
+      <div class="rope-circle"></div>
+      <div class="parent"></div>
+      <div class="parent"></div>
+      <div class="parent"></div>
+      <div class="parent"></div>
+      <div class="kid-outside"></div>
+      <div class="kid-outside"></div>
+      <div class="kid-outside"></div>
+      <div class="kid-outside"></div>
+      <div class="action-lines"><span></span><span></span><span></span><span></span></div>
+      <div class="label">四面八方</div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <span class="chapter-tag">拔河</span>
+    <h2>一二三，拉！！！</h2>
+    <p>拔河是我盼了最久的项目。中一班对中二班！这可是关系到班级荣誉的大事！</p>
+    <p>老师把一根特别粗的绳子拉到操场中间。那根绳子比我胳膊还粗！中间绑了一条红布条，对准地上的白线。我想：这根绳子是不是大象用的？</p>
+    <p>我们排好队伍，我抢到了最后一个位置——因为我看过动画片，最后面的人最重要，叫"锚"！我就是中一班的锚！</p>
+    <p>两只手紧紧攥住绳子，脚叉开使劲蹬地。前面的小朋友都弯着腰，像一群小蚂蚁要搬大象。对面中二班的小朋友也准备好了，一个个凶巴巴地瞪着我们。</p>
+    <div class="other-words">
+      <div class="speaker">老师举起小旗：</div>
+      "预备——开始！"
+    </div>
+    <p>我把吃奶的劲都使出来了。脸憋得通红通红，眼睛都快瞪出来了。绳子一会儿往那边走，一会儿往这边走，我的脚在地上滑来滑去。</p>
+    <p>旁边的爸爸妈妈们喊得嗓子都快哑了："加油！加油！拉！拉！拉！"</p>
+    <p>突然——我感觉绳子猛地松了一下，然后整个人往后一倒——红布过线了！！我们赢了！！！</p>
+    <p>一堆人倒在地上乱成一团，但是每个人都在笑。我从最下面爬出来，裤子上全是土。</p>
+    <div class="my-words">我跑到爸爸面前，扑到他怀里："爸爸！！我们赢了！！是我拉的最用力！全部都是我的功劳！"<br><br>爸爸说："是是是，全靠你。"<br><br>"真的！我是'锚'！动画片里说的，最后一个人最重要！"<br><br>爸爸帮我拍掉裤子上的土："好好好，大功臣。"</div>
+
+    <div class="illustration scene-tug">
+      <div class="rope-line"></div>
+      <div class="flag-center"></div>
+      <div class="team team-left">
+        <div class="puller"></div>
+        <div class="puller"></div>
+        <div class="puller"></div>
+        <div class="puller"></div>
+        <div class="puller"></div>
+      </div>
+      <div class="team team-right">
+        <div class="puller"></div>
+        <div class="puller"></div>
+        <div class="puller"></div>
+        <div class="puller"></div>
+        <div class="puller"></div>
+      </div>
+      <div class="crowd">加油！加油！加油！</div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <span class="chapter-tag">仰卧起坐</span>
+    <h2>我的肚子造反了</h2>
+    <p>最后一个项目是仰卧起坐。老师在草地上铺了一块紫色的垫子，让我躺下来，两只手放在耳朵旁边。爸爸蹲下来，两只大手按住我的脚踝。</p>
+    <p>我望着天，天上有一朵云飘过去，好像一只恐龙的形状。我正想仔细看看——</p>
+    <div class="other-words">
+      <div class="speaker">老师吹哨：</div>
+      "哔——开始！"
+    </div>
+    <p>我使劲收肚子往起坐——怎么起不来？！好像有个隐形的大手在按着我的背。我憋着气，"哼"的一声终于坐起来了。一个！</p>
+    <p>第二个……第三个……好累啊，肚子好酸。</p>
+    <p>第五个的时候，我觉得肚子里有一百只蚂蚁在爬。第六个，两百只。第七个——我差点起不来，在半空中晃了好久，最后"啊——"地喊了一声才坐起来。</p>
+    <div class="my-words">"爸爸！"我躺在垫子上气喘吁吁，"你是不是偷偷在推我往下？"<br><br>爸爸笑着说："我按住你的脚都来不及，哪有空推你。"<br><br>"那我的肚子是不是坏掉了？它不听我的话！"<br><br>"没坏，是它太久没锻炼了，在偷懒呢。"<br><br>"哼，回去我要批评它。"</div>
+    <p>最后我做了八个。不是最多的——小美做了十二个！但是老师走过来摸了摸我的头说："小旁很棒哦，一直在坚持，没有放弃！"</p>
+    <p>我觉得这句话比拿第一名还让我开心。虽然我的肚子不同意。</p>
+
+    <div class="illustration scene-situp">
+      <div class="count">8</div>
+      <div class="mat"></div>
+      <div class="kid-lying">
+        <div class="head-h"></div>
+        <div class="body-h"></div>
+        <div class="legs"></div>
+      </div>
+      <div class="dad-hold"></div>
+      <div class="sweat"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <span class="chapter-tag">尾声</span>
+    <h2>明年我还要来！</h2>
+    <p>运动会结束了。操场上满是被踩碎的落叶，风吹过来凉凉的。但我一点也不冷——跑了一整天，里面的衣服都被汗浸透了，妈妈肯定又要唠叨"怎么出这么多汗"。</p>
+    <p>夕阳把操场照成金色的。我牵着爸爸的手往门口走，突然转头看了看操场——彩旗还在飘，但小朋友们都走了。我觉得有点舍不得。</p>
+    <p>出了幼儿园大门，爸爸把我抱起来骑在脖子上。我搂着爸爸的额头，在上面晃来晃去。</p>
+    <div class="my-words">"爸爸，我今天表现好不好？"<br><br>"特别好。"<br><br>"那我有没有很像一个真正的运动员？"<br><br>"你就是一个真正的运动员。"<br><br>我开心得蹬了蹬腿。<br><br>"那……下次运动会，我要拿一张大大的奖状！上面写'小旁第一名'！"<br><br>"好，到时候爸爸继续来给你加油。"<br><br>"那你'四面八方'要提前练练哦。你今天差点碰不到我，多丢人啊。"<br><br>爸爸哈哈大笑，把我在肩膀上颠了颠。</div>
+    <p>冬天的傍晚来得早，路灯已经亮了。我们的影子被灯光拉得好长好长——一个大的，头上驮着一个小的，在回家的路上摇摇晃晃。</p>
+    <p>我在爸爸头顶上伸了个懒腰。今天真是好累啊。但是那种好累好累、又好开心好开心的累。</p>
+    <p>我想，这就是运动员的感觉吧。</p>
+  </div>
+
+  <div class="ending">
+    <div class="heart">♥</div>
+    <p>赢不赢其实不重要。<br>重要的是——你冲过去的每一步，<br>爸爸都在看着你。<br>而你回头的每一眼，<br>爸爸都在那里。</p>
+  </div>
+
+  <div class="brand">小旁的故事</div>
+</div>
+</body>
+</html>
