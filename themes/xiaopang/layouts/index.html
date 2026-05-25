@@ -4,7 +4,7 @@
   <p>{{ .Site.Params.description }}</p>
 </section>
 
-{{- $stories := where .Site.RegularPages "Section" "stories" }}
+{{- $stories := (where .Site.RegularPages "Section" "stories").ByDate.Reverse }}
 {{- $featured := index $stories 0 }}
 
 {{ with $featured }}
