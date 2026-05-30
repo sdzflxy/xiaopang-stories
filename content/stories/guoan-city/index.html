@@ -74,6 +74,11 @@ body { font-family:'Georgia','Noto Serif SC',serif; background:var(--story-bg); 
 .scene-gate .fg-dad .body { width:12px; height:18px; background:#1565c0; }
 .scene-gate .fg-kid .body { width:10px; height:14px; background:#4caf50; }
 .scene-gate .fg-nai .body { width:11px; height:16px; background:#7b1fa2; }
+.scene-gate .lion-l { animation:lion-breathe 3s ease-in-out infinite; }
+.scene-gate .lion-r { animation:lion-breathe 3s ease-in-out infinite 1.5s; }
+.scene-gate .family-gate { animation:walk-in 4s ease-in-out infinite; }
+.scene-gate .tower-tip { animation:tip-glow 2s ease-in-out infinite; }
+.scene-gate .gate-door::before { animation:door-glow 3s ease-in-out infinite; }
 
 /* 动物园场景 */
 .scene-zoo { background:linear-gradient(180deg,#e8f5e9,#c8e6c9); }
@@ -157,6 +162,10 @@ body { font-family:'Georgia','Noto Serif SC',serif; background:var(--story-bg); 
 .scene-garden .leaf:nth-child(15) { top:-5px; right:30%; animation-delay:3.5s; }
 
 /* 动画 */
+@keyframes lion-breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+@keyframes walk-in { 0%,100%{transform:translateX(-50%)} 50%{transform:translateX(-45%)} }
+@keyframes tip-glow { 0%,100%{box-shadow:0 0 3px rgba(255,143,0,0.3)} 50%{box-shadow:0 0 10px rgba(255,143,0,0.8)} }
+@keyframes door-glow { 0%,100%{box-shadow:0 0 5px rgba(255,143,0,0.3)} 50%{box-shadow:0 0 12px rgba(255,143,0,0.6)} }
 @keyframes drift { 0%,100%{transform:translateX(0)} 50%{transform:translateX(15px)} }
 @keyframes flag-wave { 0%,100%{transform:skewY(0deg)} 50%{transform:skewY(-3deg)} }
 @keyframes hop { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} }
