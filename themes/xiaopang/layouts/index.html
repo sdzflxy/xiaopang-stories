@@ -32,7 +32,7 @@
   <div class="more-grid">
     {{- range after 1 $stories }}
     <a href="{{ .Permalink }}" class="mini-card">
-      <div class="emoji">{{ .Params.emoji | default "📖" }}</div>
+      <div class="emoji">{{ if .Params.customIcon }}{{ .Params.iconSvg | safeHTML }}{{ else }}{{ .Params.emoji | default "📖" }}{{ end }}</div>
       <div class="text">
         <h3>{{ .Title }}</h3>
         <p>{{ .Params.when | default (.Date.Format "2006年1月") }}</p>
