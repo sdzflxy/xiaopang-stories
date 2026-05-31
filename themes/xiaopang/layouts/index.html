@@ -11,7 +11,11 @@
 <section class="featured">
   <a href="{{ .Permalink }}" class="featured-card">
     <div class="cover" style="background: linear-gradient(135deg, {{ .Params.coverGradientFrom | default "#00b4db" }}, {{ .Params.coverGradientTo | default "#f5af19" }});">
-      {{ .Params.emoji | default "📖" }}
+      {{ if .Params.customIcon }}
+        {{ .Params.iconSvg | safeHTML }}
+      {{ else }}
+        {{ .Params.emoji | default "📖" }}
+      {{ end }}
     </div>
     <div class="info">
       <div class="label">最新故事</div>
